@@ -17,10 +17,14 @@ export default function handler(req, res) {
     },
   })
     .then((response) => {
-      console.log(response);
-      return res.status(200).json({ response });
+      console.log(response.data);
+      // There, store the token and the other informations in a database to retrieve the user account without reasking to grant access to Notion
+      return res.status(200).json(response.data);
     })
     .catch((err) => {
-      return res.status(500).json(err.message);
+      // There, redirect to an error page
+      return res
+        .status(500)
+        .json("Invalid Notion code, impossible to generate the token");
     });
 }

@@ -9,7 +9,7 @@ export default function handler(req, res) {
     data: {
       code: req.query.code,
       grant_type: "authorization_code",
-      redirect_uri: "https://wrappr.dev",
+      redirect_uri: process.env.REDIRECT_AFTER_OAUTH,
     },
     auth: {
       username: process.env.NOTION_CLIENT_ID,
